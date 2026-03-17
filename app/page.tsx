@@ -11,29 +11,7 @@ type Song = {
   comment?: string;
 };
 
-const songs: Song[] = [
-  {
-    id: "1",
-    title: "Song A",
-    artist: "Your Band",
-    spotifyTrackId: "4uLU6hMCjMI75M1A2tKUQC",
-    comment: "ライブで盛り上がる定番曲！",
-  },
-  {
-    id: "2",
-    title: "Song B",
-    artist: "Your Band",
-    spotifyTrackId: "0VjIjW4GlUZAMYd2vXMi3b",
-    comment: "しっとり聴きたい一曲。",
-  },
-  {
-    id: "3",
-    title: "Song C",
-    artist: "Your Band",
-    spotifyTrackId: "7qiZfU4dY1lWllzX7mPBI3",
-    comment: "今日の気分にぴったりかも。",
-  },
-];
+import { songs } from "./data/songs";
 
 function pickRandomSong(excludeId?: string) {
   if (songs.length === 1) return songs[0];
@@ -91,7 +69,7 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-neutral-100 px-6 py-10">
       <div className="mx-auto max-w-2xl rounded-3xl bg-white p-8 shadow-lg">
-        <h1 className="text-center text-4xl font-bold">推し曲ガチャ</h1>
+        <h1 className="text-center text-4xl font-bold">ギャロガチャ</h1>
         <p className="mt-3 text-center text-gray-600">
           ボタンを押すと、ランダムで1曲表示されます。
         </p>
@@ -109,7 +87,8 @@ export default function Page() {
           <section className="mt-8 rounded-2xl border border-gray-200 bg-gray-50 p-6">
             <p className="text-sm text-gray-500">今日の1曲</p>
             <h2 className="mt-1 text-3xl font-bold">{pickedSong.title}</h2>
-            <p className="mt-1 text-base text-gray-700">{pickedSong.artist}</p>
+            {/* アーティスト名は一旦非表示 */}
+            {/* <p className="mt-1 text-base text-gray-700">{pickedSong.artist}</p> */}
 
             {pickedSong.comment && (
               <p className="mt-3 text-gray-600">{pickedSong.comment}</p>
