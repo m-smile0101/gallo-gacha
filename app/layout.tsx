@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { RocknRoll_One } from "next/font/google";
+
+const rock = RocknRoll_One({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -23,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja" className={rock.className}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

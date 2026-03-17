@@ -13,6 +13,13 @@ type Song = {
 
 import { songs } from "./data/songs";
 
+import { RocknRoll_One } from "next/font/google";
+
+const rock = RocknRoll_One({
+  subsets: ["latin"],
+  weight: "400",
+});
+
 function pickRandomSong(excludeId?: string) {
   if (songs.length === 1) return songs[0];
 
@@ -54,11 +61,11 @@ export default function Page() {
 
   const shareUrl = useMemo(() => {
     if (!pickedSong) {
-      const text = "推し曲ガチャを回してみた🎧";
+      const text = "ギャロガチャを回してみた🎧";
       return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
     }
 
-    const text = `今日の推し曲ガチャ🎧
+    const text = `今日のギャロガチャ🎧
 「${pickedSong.title} / ${pickedSong.artist}」が出た！`;
 
     const currentUrl = `http://localhost:3000/?song=${pickedSong.id}`;
@@ -66,27 +73,32 @@ export default function Page() {
     return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(currentUrl)}`;
   }, [pickedSong]);
 
-  return (
-    <main className="min-h-screen bg-neutral-100 px-6 py-10">
-      <div className="mx-auto max-w-2xl rounded-3xl bg-white p-8 shadow-lg">
-        <h1 className="text-center text-4xl font-bold">ギャロガチャ</h1>
-        <p className="mt-3 text-center text-gray-600">
-          ボタンを押すと、ランダムで1曲表示されます。
+return (
+  <main className="min-h-screen bg-[#3a3a3a] px-4 pt-6 pb-6">
+    <div className="mx-auto w-full max-w-md">
+      <section className="rounded-3xl bg-gray-50 p-5 shadow-lg">
+      <h1 className={`${rock.className} mt-0 text-center text-4xl font-black tracking-wide text-gray-900`}>
+        ギャロガチャ
+      </h1>
+
+        <p className="mt-3 text-center text-sm text-gray-600">
+          ボタンを押して、今日の1曲を聴こう🥄
         </p>
 
-        <div className="mt-8 flex justify-center">
-          <button
-            onClick={handleGacha}
-            className="rounded-full bg-black px-6 py-3 text-base font-bold text-white transition hover:opacity-80"
-          >
-            ガチャを回す
-          </button>
-        </div>
+        <button
+          onClick={handleGacha}
+          className="mt-6 w-full rounded-2xl bg-black px-4 py-4 text-lg font-bold text-white transition hover:scale-101 active:scale-[0.98]"
+        >
+          ガチャを回す
+        </button>
 
         {pickedSong && (
-          <section className="mt-8 rounded-2xl border border-gray-200 bg-gray-50 p-6">
+          <section className="mt-8 rounded-2xl border border-gray-200 bg-gray-200 p-2">
             <p className="text-sm text-gray-500">今日の1曲</p>
-            <h2 className="mt-1 text-3xl font-bold">{pickedSong.title}</h2>
+            <h2 className="notranslate mt-1 text-2xl font-bold">
+              {pickedSong.title}
+            </h2>
+
             {/* アーティスト名は一旦非表示 */}
             {/* <p className="mt-1 text-base text-gray-700">{pickedSong.artist}</p> */}
 
@@ -94,7 +106,7 @@ export default function Page() {
               <p className="mt-3 text-gray-600">{pickedSong.comment}</p>
             )}
 
-            <div className="mt-5">
+            <div className="mt-3 -mx-2">
               <iframe
                 src={embedUrl}
                 width="100%"
@@ -121,14 +133,15 @@ export default function Page() {
                 href={shareUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full bg-black px-4 py-2 font-bold text-white transition hover:opacity-80"
+                className="rounded-full bg-black px-4 py-2 font-bold text-white transition  hover:opacity-80"
               >
                 Xで共有
               </a>
             </div>
           </section>
         )}
-      </div>
-    </main>
-  );
+      </section>
+    </div>
+  </main>
+);
 }
