@@ -59,19 +59,22 @@ function PageContent() {
     return `https://open.spotify.com/embed/track/${pickedSong.spotifyTrackId}`;
   }, [pickedSong]);
 
-  const shareUrl = useMemo(() => {
-    if (!pickedSong) {
-      const text = "ギャロガチャを回してみた🎧";
-      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-    }
+const shareUrl = useMemo(() => {
+  if (!pickedSong) {
+    const text = "ギャロガチャを回してみた🎧";
+    return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+  }
 
-    const text = `今日のギャロガチャ🎧
+  const text = `今日のギャロガチャ🎧
 「${pickedSong.title} / ${pickedSong.artist}」が出た！`;
 
-    const currentUrl = `http://localhost:3000/?song=${pickedSong.id}`;
+  const currentUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/?song=${pickedSong.id}`
+      : "";
 
-    return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(currentUrl)}`;
-  }, [pickedSong]);
+  return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(currentUrl)}`;
+}, [pickedSong]);
 
   return (
     <main className="min-h-screen bg-[#3a3a3a] px-4 pt-6 pb-6">
