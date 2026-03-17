@@ -1,7 +1,6 @@
 "use client";
 
-import { Suspense, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 
 type Song = {
   id: string;
@@ -31,20 +30,22 @@ function pickRandomSong(excludeId?: string) {
 }
 
 function PageContent() {
-  const searchParams = useSearchParams();
-  const songIdFromUrl = searchParams.get("song");
+  const [pickedSong, setPickedSong] = useState<Song | null>(null);
 
-  const initialSong =
-    songs.find((s) => s.id === songIdFromUrl) || null;
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const songIdFromUrl = params.get("song");
 
-  const [pickedSong, setPickedSong] =
-    useState<Song | null>(initialSong);
+    const initialSong =
+      songs.find((s) => s.id === songIdFromUrl) || null;
+
+    setPickedSong(initialSong);
+  }, []);
 
   const handleGacha = () => {
     const nextSong = pickRandomSong(pickedSong?.id);
     setPickedSong(nextSong);
 
-    // URLを更新
     const newUrl = `/?song=${nextSong.id}`;
     window.history.pushState(null, "", newUrl);
   };
@@ -59,22 +60,22 @@ function PageContent() {
     return `https://open.spotify.com/embed/track/${pickedSong.spotifyTrackId}`;
   }, [pickedSong]);
 
-const shareUrl = useMemo(() => {
-  if (!pickedSong) {
-    const text = "ギャロガチャを回してみた🎧";
-    return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-  }
+  const shareUrl = useMemo(() => {
+    if (!pickedSong) {
+      const text = "ギャロガチャを回してみた🎧";
+      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+    }
 
-  const text = `今日のギャロガチャ🎧
+    const text = `今日のギャロガチャ🎧
 「${pickedSong.title} / ${pickedSong.artist}」が出た！`;
 
-  const currentUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}/?song=${pickedSong.id}`
-      : "";
+    const currentUrl =
+      typeof window !== "undefined"
+        ? `${window.location.origin}/?song=${pickedSong.id}`
+        : "";
 
-  return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(currentUrl)}`;
-}, [pickedSong]);
+    return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(currentUrl)}`;
+  }, [pickedSong]);
 
   return (
     <main className="min-h-screen bg-[#3a3a3a] px-4 pt-6 pb-6">
@@ -101,9 +102,6 @@ const shareUrl = useMemo(() => {
               <h2 className="notranslate mt-1 text-2xl font-bold">
                 {pickedSong.title}
               </h2>
-
-              {/* アーティスト名は一旦非表示 */}
-              {/* <p className="mt-1 text-base text-gray-700">{pickedSong.artist}</p> */}
 
               {pickedSong.comment && (
                 <p className="mt-3 text-gray-600">{pickedSong.comment}</p>
@@ -150,9 +148,5 @@ const shareUrl = useMemo(() => {
 }
 
 export default function Page() {
-  return (
-    <Suspense fallback={null}>
-      <PageContent />
-    </Suspense>
-  );
+  return <PageContent />;
 }
