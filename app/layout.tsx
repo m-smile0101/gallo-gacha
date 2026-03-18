@@ -23,8 +23,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "ギャロガチャ",
   description: "ギャロの楽曲をランダムで引ける音楽ガチャ（非公式ファン制作）",
-  },
-};
+  }
 
 export default function RootLayout({
   children,
