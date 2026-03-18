@@ -107,7 +107,7 @@ function PageContent() {
                 <p className="mt-3 text-gray-600">{pickedSong.comment}</p>
               )}
 
-              <div className="mt-3 -mx-2">
+              <div className="mt-4">
                 <iframe
                   src={embedUrl}
                   width="100%"
