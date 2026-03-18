@@ -22,6 +22,7 @@ const geistMono = Geist_Mono({
 
 
 export const metadata = {
+  metadataBase: new URL("https://gallo-gacha.vercel.app"),
   title: "ギャロガチャ",
   description: "ギャロの楽曲をランダムで引ける音楽ガチャ（非公式ファン制作）",
   openGraph: {
