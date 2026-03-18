@@ -61,21 +61,21 @@ function PageContent() {
   }, [pickedSong]);
 
   const shareUrl = useMemo(() => {
-    if (!pickedSong) {
-      const text = "ギャロガチャを回してみた🎧";
-      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-    }
+    if (!pickedSong) return "";
 
-    const text = `今日のギャロガチャ🎧
-「${pickedSong.title} / ${pickedSong.artist}」が出た！`;
+  const text = `ギャロガチャ引いてみた！🍽
+「${pickedSong.title}」が出た！✨
+みんなもやってみてね🤗`;
 
-    const currentUrl =
-      typeof window !== "undefined"
-        ? `${window.location.origin}/?song=${pickedSong.id}`
-        : "";
+  const currentUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/?song=${pickedSong.id}`
+      : "";
 
-    return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(currentUrl)}`;
-  }, [pickedSong]);
+  if (!currentUrl) return "";
+
+  return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(currentUrl)}`;
+}, [pickedSong]);
 
   return (
     <main className="min-h-screen bg-[#3a3a3a] px-4 pt-6 pb-6">

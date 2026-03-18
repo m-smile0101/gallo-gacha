@@ -145,6 +145,35 @@ Spotify URLなどをまとめたExcelファイルなど、公開したくないファイルは `.gitignore
 
 ---
 
+
+## 曲データの作成について
+以下のExcelデータを、TypeScriptの配列データに変換してください。
+
+■ 出力形式
+export type Song = {
+  id: string;
+  title: string;
+  artist: string;
+  album: string;
+  spotifyTrackId: string;
+  comment: string;
+};
+
+export const songs: Song[] = [
+  // ここに変換
+];
+
+■ ルール
+・spotifyURLからspotifyTrackIdだけを抽出してください
+（例：https://open.spotify.com/.../track/XXX → XXX）
+・idは文字列にしてください
+
+■ データ
+id	title	artist	album	spotifyURL	comment
+1	夢魔-INCUBUS-	ギャロ	DIAVOLO	https://open.spotify.com/intl-ja/track/4hyQjHWq3eUBn6YwTiSuKk?si=1ba1a36a9dc1462e	僕らは夢を喰らう～♪
+
+---
+
 ## 補足
 このプロジェクトは、学習も兼ねた個人開発です。  
 まずは小さく作って公開し、少しずつ改善していきたいです。  
