@@ -120,7 +120,7 @@ function PageContent() {
                 />
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-3">
+              <div className="mt-2 flex flex-wrap gap-3">
                 <a
                   href={spotifyUrl}
                   target="_blank"
