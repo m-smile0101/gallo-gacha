@@ -107,7 +107,7 @@ function PageContent() {
                 <p className="mt-3 text-gray-600">{pickedSong.comment}</p>
               )}
 
-              <div className="mt-1 -mx-2">
+              <div className="mt-2 -mx-2">
                 <iframe
                   src={embedUrl}
                   width="100%"
@@ -120,7 +120,7 @@ function PageContent() {
                 />
               </div>
 
-              <div className="-mt-4 flex flex-wrap gap-3">
+              <div className="-mt-5 flex flex-wrap gap-3">
                 <a
                   href={spotifyUrl}
                   target="_blank"
