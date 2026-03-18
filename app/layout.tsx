@@ -30,7 +30,7 @@ export const metadata = {
     description: "ギャロの楽曲をランダムで引ける音楽ガチャ（非公式ファン制作）",
     images: [
       {
-        url: "/ogp.png",
+        url: "ogp-v2.png",
         width: 1200,
         height: 630,
         alt: "ギャロガチャ",
@@ -41,7 +41,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "ギャロガチャ",
     description: "ギャロの楽曲をランダムで引ける音楽ガチャ（非公式ファン制作）",
-    images: ["/ogp.png"],
+    images: ["ogp-v2.png"],
   },
 };
 
