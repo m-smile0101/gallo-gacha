@@ -20,10 +20,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
 export const metadata = {
   title: "ギャロガチャ",
   description: "ギャロの楽曲をランダムで引ける音楽ガチャ（非公式ファン制作）",
-  }
+  openGraph: {
+    title: "ギャロガチャ",
+    description: "ギャロの楽曲をランダムで引ける音楽ガチャ（非公式ファン制作）",
+    images: [
+      {
+        url: "/ogp.png",
+        width: 1200,
+        height: 630,
+        alt: "ギャロガチャ",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ギャロガチャ",
+    description: "ギャロの楽曲をランダムで引ける音楽ガチャ（非公式ファン制作）",
+    images: ["/ogp.png"],
+  },
+};
+
 
 export default function RootLayout({
   children,
