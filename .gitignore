@@ -39,3 +39,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Excel
+*.xlsx
+*.xls
+
+# CSV
+*.csv
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# logsÅiîOÇÃÇΩÇﬂÅj
+*.log
+logs/
