@@ -429,7 +429,7 @@ export const songs: Song[] = [
     title: "IL RISTORANTE GIALLO-GINZA-",
     artist: "ギャロ",
     album: "聖黒薔薇學院-青春-",
-    spotifyTrackId: "1RkCmHGxaGb0IvlNdTrEer",
+    spotifyTrackId: "5ruoMQQdGoqKFMRHfbMsbR",
     comment: "＼いただきます！／",
   },
   {
@@ -437,7 +437,7 @@ export const songs: Song[] = [
     title: "VILLAIN-DEATH-",
     artist: "ギャロ",
     album: "聖黒薔薇學院-青春-",
-    spotifyTrackId: "5ruoMQQdGoqKFMRHfbMsbR",
+    spotifyTrackId: "1RkCmHGxaGb0IvlNdTrEer",
     comment: "仮面ライダーV３でサーキットモッシュ",
   },
   {
