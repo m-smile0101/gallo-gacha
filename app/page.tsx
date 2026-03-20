@@ -63,8 +63,8 @@ function PageContent() {
   const shareUrl = useMemo(() => {
     if (!pickedSong) return "";
 
-  const text = `ギャロガチャ引いてみた！🍽
-「${pickedSong.title}」が出た！✨
+  const text = `今日のギャロガチャ！🍽
+「${pickedSong.title}」が出たよ！✨
 みんなもやってみてね🤗`;
 
   const currentUrl =
