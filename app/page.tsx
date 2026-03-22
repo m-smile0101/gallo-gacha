@@ -65,7 +65,7 @@ function PageContent() {
 
   const text = `今日のギャロガチャ！🍽
 「${pickedSong.title}」が出たよ！✨
-みんなもやってみてね🤗`;
+みんなも聴いてみてね🤗`;
 
   const currentUrl =
     typeof window !== "undefined"
